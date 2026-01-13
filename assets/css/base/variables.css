@@ -1,25 +1,123 @@
 /*피그마 스타일 적용, 전역 인터랙션 변수 정의*/
 
-@font-face {
-  font-family: "SpoqaHanSansNeo";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")
-    format("woff");
-  font-weight: normal;
-  font-display: swap;
-}
+:root{
 
-@font-face {
-  font-family: "SpoqaHanSansNeo";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Medium.woff")
-    format("woff");
-  font-weight: 500;
-  font-display: swap;
-}
+  /* 1. Typography */
+    /* font-familly */
+    --font-base:'SpoqaHanSansNeo', sans-serif;
 
-@font-face {
-  font-family: "SpoqaHanSansNeo";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Bold.woff")
-    format("woff");
-  font-weight: 700;
-  font-display: swap;
+  /* font-weight */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+  /* font-size 가변 타이포 방식 clamp(최소 크기, 가변 크기, 최대 크기) */
+
+  /*본문 크기 고정*/
+    --fs-xs: 1.2rem;
+    --fs-sm: 1.4rem;
+    --fs-md: 1.6rem;
+
+  /* 모바일 포함 */
+    --fs-lg: clamp(1.8rem, 4vw, 2.2rem);
+    --fs-xl: clamp(2.2rem, 5vw, 2.4rem);
+    --fs-xxl: clamp(2.8rem, 6vw, 3.6rem);
+    --fs-xxxl: clamp(3.2rem, 8vw, 4.8rem);
+
+  /* 2. color system */
+
+  /* text colors */
+    --color-text-base:#000000;
+    --color-text-inverse: #FFFFFF; /*초록색 배경용*/
+    --color-text-accent:#FF0000; /*강조*/
+    --color-text-muted:#767676; /*보조 설명*/
+    
+  /* background colors */
+    --color-bg-base: #FFFFFF; 
+    --color-bg-secondary: #F2F2F2; /*푸터 및 구분 섹션 배경*/
+    --color-bg-dim:rgba(0, 0, 0, 0.6); /*뒷배경*/
+
+    --color-primary: #21BF48; 
+    --color-primary-hover: #1EAB40; /* 인터랙션 변수(마우스) */
+    --color-primary-active: #178A33; /* (클릭) */
+    --color-error: #EB5757; 
+
+  /* 3. layout&spacing */
+  /* Container width */
+    --container-width: 1280px;
+    --container-padding: clamp(2.0rem, 5vw, 4.0rem);
+
+  /* Spacing System */
+    --space-xs: 0.8rem;
+    --space-sm: 1.2rem;
+    --space-md: clamp(2.0rem, 2.5vw, 3.2rem); /*섹션 내 요소*/
+    --space-lg: clamp(4.0rem, 5vw, 8.0rem); /*섹션 사이 간격*/
+    --space-xl: clamp(8.0rem, 8vw, 12.0rem);
+
+  /* Border radius */
+  --radius-sm: 0.5rem; /*버튼 및 입력창*/
+  --radius-md: 1.8rem; /*컨테이너, 상품 카드*/
+  --radius-lg: 3.0rem; /*모달 및 배너*/
+
+  /* 4. Icon assets */
+  /* Icon 단축어 */
+    --icon-fb: url('/assets/images/icon-fb.svg');
+    --icon-insta: url('/assets/images/icon-insta.svg');
+    --icon-yt: url('/assets/images/icon-yt.svg');
+    --logo-hodu: url('/assets/images/Logo-hodu.png');
+
+    --icon-cart: url('/assets/images/icon-shopping-cart.svg');
+    --icon-cart-2: url('/assets/images/icon-shopping-cart-2.svg');
+    --icon-bag: url('/assets/images/icon-shopping-bag.svg');
+
+    --icon-check: url('/assets/images/icon-check.svg');
+    --icon-check-on: url('/assets/images/icon-check-on.svg');
+    --icon-check-off: url('/assets/images/icon-check-off.svg');
+    --icon-check-box: url('/assets/images/check-box.svg');
+    --icon-check-fill: url('/assets/images/check-fill-box.svg');
+
+    --icon-down-arrow: url('/assets/images/icon-down-arrow.svg');
+    --icon-up-arrow: url('/assets/images/icon-up-arrow.svg');
+    --icon-right-arrow: url('/assets/images/icon-right-arrow.svg');
+    --icon-swiper-1: url('/assets/images/icon-swiper-1.svg');
+    --icon-swiper-2: url('/assets/images/icon-swiper-2.svg');
+
+    --icon-user: url('/assets/images/icon-user.svg');
+    --icon-user-2: url('/assets/images/icon-user-2.svg');
+    --icon-delete: url('/assets/images/icon-delete.svg');
+    --icon-plus: url('/assets/images/icon-plus.svg');
+    --icon-plus-line: url('/assets/images/icon-plus-line.svg');
+    --icon-minus-line: url('/assets/images/icon-minus-line.svg');
+    --icon-img: url('/assets/images/icon-img.png');
+
+  /* Icon-size 가변 타이포 방식*/
+    --icon-size-sm: clamp(1.4rem, 2vw, 1.6rem); 
+    --icon-size-md: clamp(2.0rem, 4vw, 2.4rem); /* HODU 메인 아이콘 규격 */
+    --icon-size-lg: clamp(2.4rem, 5vw, 3.2rem);
+
+  /* Icon Interaction */
+    --icon-filter-hover: brightness(0.8); /* 마우스 */
+    --icon-filter-active: brightness(0.6); /* 클릭 */
+    --icon-filter-white: brightness(0) invert(1); /* 어두운 배경용 */
+
+  /* Icon Spacing */
+    --icon-gap-sm: 0.4rem;
+    --icon-gap-md: 0.8rem;
+
+  /* 5. Button */
+
+  /* button text size */
+    --btn-fs: clamp(1.4rem, 2vw, 1.8rem); 
+
+  /* padding */
+    --btn-padding-v: 1.2rem;
+    --btn-padding-h: clamp(1.6rem, 5vw, 4.0rem);
+
+  /* button width&height */
+    --btn-min-width: clamp(8.0rem, 15vw, 12.0rem);
+    --btn-height: clamp(4.0rem, 6vw, 6.0rem); /*호두 기준*/
+
+  /* radius */
+    --btn-radius: var(--radius-md);
+
 }
