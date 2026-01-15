@@ -196,3 +196,41 @@
 .plus.is-disabled::before {
     background-image: url('/assets/images/icon-plus-line_disabled.svg');
 }
+
+/* ===== lock in CTA button visual styles (#2) ===== */
+.M-button,
+.M-dark-button {
+    border: none;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    color: var(--color-text-inverse);
+    font-size: var(--fs-lg);
+}
+
+.M-button {
+    width: 41.6rem;
+    height: 6rem;
+    background-color: var(--color-primary);
+}
+
+.M-button:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.M-button:active {
+    background-color: var(--color-primary-active);
+}
+
+.M-dark-button {
+    width: 20rem;
+    height: 6rem;
+    background-color: var(--color-dark);
+}
+
+.M-dark-button:hover {
+    background-color: var(--color-dark-hover);
+}
+
+.M-dark-button:active {
+    background-color: var(--color-dark-active);
+}
