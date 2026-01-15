@@ -45,7 +45,7 @@
   /* 3. layout&spacing */
   /* Container width */
     --container-width: 1280px;
-    --container-padding: clamp(2.0rem, 5vw, 4.0rem);
+    --container-padding: clamp(2.0rem, 5vw, 2.2rem);
 
   /* Spacing System */
     --space-xs: 0.8rem;
