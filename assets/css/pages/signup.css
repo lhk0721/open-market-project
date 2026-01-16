@@ -7,7 +7,7 @@
 }
 
 .logo-home img {
-    width: 23.8rem;
+    width: 23.0rem;
     height: auto;
 }
 
@@ -30,12 +30,13 @@
     z-index: 20; 
 }
 
+/* 1. 탭 버튼: 하단 곡률을 없애고 상단만 둥글게 유지합니다. */
 .signup-tabs button {
     flex: 1;
     padding: 1.8rem 0 2.5rem;
     background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-bg-border);
-    border-radius: 1.0rem 1.0rem 0 0; 
+    border-radius: 1.0rem 1.0rem 0 0; /* 상단 곡률 유지 */
     font-size: var(--fs-fixed-lg);
     font-weight: var(--fw-medium);
     color: var(--color-text-base);
@@ -43,21 +44,24 @@
     z-index: 1; 
 }
 
+/* 2. 활성화된 탭: 컨테이너의 윗선을 가릴 수 있도록 보더 설정을 수정합니다. */
 .signup-tabs button.on {
     background-color: var(--color-bg-base);
-    border-bottom: 2px solid var(--color-bg-base);
-    margin-bottom: -1px;
+    border-bottom: 1px solid var(--color-bg-base); /* 2px에서 1px로 변경하여 정교하게 가림 */
+    margin-bottom: -1px; /* 컨테이너 보더와 겹치게 설정 */
     z-index: 15; 
 }
 
+/* 3. 컨테이너: 상단 전체를 직선(0)으로 만들어 탭과 완벽히 밀착시킵니다. */
 .common-info, .seller-info-area {
     background-color: var(--color-bg-base);
     border: 1px solid var(--color-bg-border);
-    border-radius: 0 1.0rem 1.0rem 1.0rem;
+    /* 기존 0 1.0rem 1.0rem 1.0rem에서 아래와 같이 변경 */
+    border-radius: 0 0 1.0rem 1.0rem; 
     padding: 3.5rem;
     position: relative;
     z-index: 10; 
-    margin-top: -1px;
+    margin-top: -1px; /* 탭 보더와 겹쳐서 틈새 제거 */
 }
 
 label[for="phone-prefix"] {
@@ -75,25 +79,29 @@ label[for="phone-prefix"] {
 }
 
 .check-label {
-    display: flex;
-    align-items: center; 
-    gap: 0.8rem; 
-    margin-top: 3.5rem;
-    margin-bottom: 3.0rem;
+    position: relative;
+    display: block;
+    padding-left: 2.6rem;
+    margin-top: 3.0rem;
+    margin-bottom: 0;
     cursor: pointer;
 }
 
 .check-label input[type="checkbox"] {
-    width: 1.8rem;
-    height: 1.8rem;
-    cursor: pointer;
-    margin-top: -2px; 
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0; 
 }
 
 .check-text {
-    font-size: 1.8rem; 
+    display: block;
+    font-size: 1.5rem; 
     color: var(--color-text-muted);
-    line-height: 1.2; 
+    line-height: 1.6; 
+    word-break: keep-all;
 }
 
 .check-text a {
@@ -105,6 +113,7 @@ label[for="phone-prefix"] {
 .btn-submit-join {
     width: 100%;
     padding: 1.6rem 0;
+    margin-top: 1.5rem;
     font-size: var(--fs-fixed-lg);
     font-weight: var(--fw-bold);
     border-radius: var(--radius-sm);
