@@ -2,8 +2,8 @@
     padding: 6.0rem 0; 
     text-align: center;
     background-color: var(--color-bg-base);
-    border-bottom: none !important;
-    box-shadow: none !important;
+    border-bottom: none;
+    box-shadow: none;
 }
 
 .logo-home img {
@@ -62,7 +62,7 @@
 
 label[for="phone-prefix"] {
     display: block; 
-    margin-top: 1.5rem !important; 
+    margin-top: 1.5rem; 
 }
 
 .common-info .input-row:last-of-type {
@@ -79,7 +79,7 @@ label[for="phone-prefix"] {
     align-items: center; 
     gap: 0.8rem; 
     margin-top: 3.5rem;
-    margin-bottom: 3.0rem !important;
+    margin-bottom: 3.0rem;
     cursor: pointer;
 }
 
