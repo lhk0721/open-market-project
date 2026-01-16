@@ -101,14 +101,14 @@ const initGNB = () => {
             if (!isLoggedIn) {
                 if (typeof openModal === 'function') openModal(); 
             } else {
-                location.href = '${rootPrefix}cart/index.html';
+                location.href = `${rootPrefix}cart/index.html`;
             }
         });
     }
 
     if (sellerBtn) {
         sellerBtn.addEventListener('click', () => {
-            location.href = '${rootPrefix}seller-center/index.html'; // 판매자 센터 경로
+            location.href = `${rootPrefix}seller-center/index.html`; // 판매자 센터 경로
         });
     }
 
@@ -118,7 +118,7 @@ const initGNB = () => {
             e.stopPropagation();
             if (!isLoggedIn) {
                 // 실제 로그인은 login.html 페이지 내 로직에서 처리됨
-                location.href = '${rootPrefix}html/login/index.html';
+                location.href = `${rootPrefix}html/login/index.html`;
             } else {
                 const isShowing = dropdownMenu.classList.toggle('show');
                 loginBtn.classList.toggle('active', isShowing);
@@ -129,7 +129,7 @@ const initGNB = () => {
 
         if (mypageBtn) {
             mypageBtn.addEventListener('click', () => {
-                location.href = '${rootPrefix}mypage/index.html'; 
+                location.href = `${rootPrefix}mypage/index.html`; 
             });
         }
 
