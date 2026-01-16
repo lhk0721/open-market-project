@@ -93,7 +93,11 @@
     --icon-up-arrow: url('/assets/images/icon-up-arrow.svg');
     --icon-right-arrow: url('/assets/images/icon-right-arrow.svg');
     --icon-swiper-1: url('/assets/images/icon-swiper-1.svg');
+    --icon-swiper-1_hover: url('/assets/images/icon-swiper-1_hover.png');
+    --icon-swiper-1_active: url('/assets/images/icon-swiper-1_active.png');
     --icon-swiper-2: url('/assets/images/icon-swiper-2.svg');
+    --icon-swiper-2_hover: url('/assets/images/icon-swiper-2_hover.png');
+    --icon-swiper-2_active: url('/assets/images/icon-swiper-2_active.png');
 
     --icon-user: url('/assets/images/icon-user.svg');
     --icon-user-2: url('/assets/images/icon-user-2.svg');
