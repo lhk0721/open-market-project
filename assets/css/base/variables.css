@@ -85,7 +85,7 @@
 
   /* 4. Icon */
   /* Icon 단축어 */
-    --icon-404: url('/assets/images/icon-404.svg');
+    --icon-404: url('../../images/icon-404.svg');
     --icon-fb: url('../../images/icon-fb.svg');
     --icon-insta: url('../../images/icon-insta.svg');
     --icon-yt: url('../../images/icon-yt.svg');
