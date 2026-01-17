@@ -60,6 +60,7 @@
   /* Spacing System */
     --space-xs: 0.8rem;
     --space-sm: 1.2rem;
+    --space-form: 1.5rem;  
     --space-md: clamp(2.0rem, 2.5vw, 3.2rem); /*섹션 내 요소*/
     --space-lg: clamp(4.0rem, 5vw, 8.0rem); /*섹션 사이 간격*/
     --space-xl: clamp(8.0rem, 8vw, 12.0rem);
@@ -67,16 +68,25 @@
 
   /* Border radius */
   --radius-sm: 0.5rem; /*버튼 및 입력창*/
+  --radius-form: 1.0rem; 
   --radius-ms: 1.6rem; /*버튼*/
   --radius-md: 1.8rem; /*컨테이너, 상품 카드*/
   --radius-lg: 3.0rem; /*모달 및 배너*/
 
   /* 4. Icon assets */
   /* Icon 단축어 */
+<<<<<<< HEAD
+    --icon-fb: url('/assets/images/icon-fb.svg');
+    --icon-insta: url('/assets/images/icon-insta.svg');
+    --icon-yt: url('/assets/images/icon-yt.svg');
+    --logo-hodu: url('/assets/images/Logo-hodu.png');
+    --icon-404: url('/assets/images/icon-404.png');
+=======
     --icon-fb: url('../../images/icon-fb.svg');
     --icon-insta: url('../../images/icon-insta.svg');
     --icon-yt: url('../../images/icon-yt.svg');
     --logo-hodu: url('../../images/Logo-hodu.svg');
+>>>>>>> main
 
     --icon-search: url('../../images/icon-search.svg');
     --icon-cart: url('../../images/icon-shopping-cart.svg');
@@ -114,6 +124,8 @@
     --icon-size-md: clamp(2.0rem, 4vw, 2.4rem); /* HODU 메인 아이콘 규격 */
     --icon-size-lg: clamp(2.4rem, 5vw, 3.2rem);
 
+    --logo-size-signup: 23.0rem; 
+
   /* Icon Interaction */
     --icon-filter-hover: brightness(0.8); /* 마우스 */
     --icon-filter-active: brightness(0.6); /* 클릭 */
@@ -130,6 +142,8 @@
 
   /* padding */
     --btn-padding-v: 1.2rem;
+    --btn-padding-tab-t: 1.8rem;  
+    --btn-padding-tab-b: 2.5rem;  
     --btn-padding-h: clamp(1.6rem, 5vw, 4.0rem);
 
   /* button width&height */
@@ -141,5 +155,27 @@
     --btn-radius: var(--radius-md);
   
   /* product img size */
-  --product-img-size: 60rem; /*레이아웃 기준 사이즈*/
+    --product-img-size: 60rem; /*레이아웃 기준 사이즈*/
+
+  /* 6 . form */
+  /* Form Validation Colors */
+    --form-color-success: #21BF48; 
+    --form-color-error: #EB5757; 
+    
+  /* Form Validation Typography */
+    --form-fs-msg: 1.4rem; 
+    --form-fs-btn: 1.4rem;
+    
+  /* Form Validation Spacing */
+    --form-space-msg: 0.8rem;
+    --form-input-padding-h: 1.5rem;
+    --form-logo-padding-v: 4.0rem;
+    
+  /* Form Validation Icons (Filter) */
+    --form-filter-success: invert(48%) sepia(87%) saturate(418%) hue-rotate(84deg) brightness(95%) contrast(88%);
+    --form-filter-disabled: grayscale(100%) opacity(0.2);
+
+  /* 7 . Password Field Spec */
+    --form-pw-dots-fs: 2.4rem; /* 비밀번호 점 크기 */
+    --form-pw-dots-ls: 0.4rem; /* 비밀번호 점 간격 */
 }

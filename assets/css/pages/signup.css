@@ -1,5 +1,5 @@
 .header-signup {
-    padding: 6.0rem 0; 
+    padding: var(--form-logo-padding-v) 0; 
     text-align: center;
     background-color: var(--color-bg-base);
     border-bottom: none;
@@ -7,13 +7,14 @@
 }
 
 .logo-home img {
-    width: 23.8rem;
+    width: var(--logo-size-signup);
     height: auto;
 }
 
 .signup-main {
-    padding-bottom: 3.0rem; 
+    padding-bottom: var(--space-md);
     display: flex;
+    /*가입 상자*/
     justify-content: center;
     background-color: var(--color-bg-base);
 }
@@ -27,15 +28,16 @@
 .signup-tabs {
     display: flex;
     position: relative;
+    /*층 쌓기*/
     z-index: 20; 
 }
 
 .signup-tabs button {
     flex: 1;
-    padding: 1.8rem 0 2.5rem;
+    padding: var(--btn-padding-tab-t) 0 var(--btn-padding-tab-b);
     background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-bg-border);
-    border-radius: 1.0rem 1.0rem 0 0; 
+    border-radius: var(--radius-form) var(--radius-form) 0 0; 
     font-size: var(--fs-fixed-lg);
     font-weight: var(--fw-medium);
     color: var(--color-text-base);
@@ -45,55 +47,90 @@
 
 .signup-tabs button.on {
     background-color: var(--color-bg-base);
-    border-bottom: 2px solid var(--color-bg-base);
-    margin-bottom: -1px;
+    border-bottom: 1px solid var(--color-bg-base); 
+    margin-bottom: -1px; 
     z-index: 15; 
 }
 
 .common-info, .seller-info-area {
     background-color: var(--color-bg-base);
     border: 1px solid var(--color-bg-border);
+<<<<<<< HEAD
+    border-radius: 0 0 var(--radius-form) var(--radius-form); 
+    padding: 1.8rem var(--space-md);
+=======
     border-radius: 0 0 1.0rem 1.0rem;
     padding: 3.5rem;
+>>>>>>> main
     position: relative;
     z-index: 10; 
-    margin-top: -1px;
+    margin-top: -1px; 
+}
+
+/* 구매자 영역 아래에 연결 */
+.seller-info-area {
+    border-radius: 0;
+    border-top: none;
+    margin-top: 0;
+}
+
+/* 판매자 탭 활성화 시 구매자 영역 하단 border-radius 제거 */
+.signup-form.seller-mode .common-info {
+    border-radius: 0;
+    border-bottom: none;
+}
+
+/* 판매자 탭 활성화 시 판매자 영역 하단 border-radius 추가 */
+.signup-form.seller-mode .seller-info-area {
+    border-radius: 0 0 var(--radius-form) var(--radius-form);
+    display: block;
+}
+
+/* 판매자 영역 숨김 (기본) */
+.seller-info-area {
+    display: none;
 }
 
 label[for="phone-prefix"] {
     display: block; 
-    margin-top: 1.5rem; 
+    margin-top: var(--space-form); 
 }
 
+/*마지막 행*/
 .common-info .input-row:last-of-type {
-    margin-bottom: 1.0rem; 
+    margin-bottom: var(--space-xs); 
 }
 
 .form-footer {
-    padding: 0 3.5rem;
+    padding: 0 var(--space-md);
     padding-top: 0;
 }
 
 .check-label {
-    display: flex;
-    align-items: center; 
-    gap: 0.8rem; 
-    margin-top: 3.5rem;
-    margin-bottom: 3.0rem;
+    position: relative;
+    display: block;
+    padding-left: 2.6rem;
+    margin-top: var(--space-md) !important;
+    margin-bottom: 0;
     cursor: pointer;
 }
 
 .check-label input[type="checkbox"] {
-    width: 1.8rem;
-    height: 1.8rem;
-    cursor: pointer;
-    margin-top: -2px; 
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 0; 
 }
 
 .check-text {
-    font-size: 1.8rem; 
+    display: block;
+    font-size: 1.5rem; 
     color: var(--color-text-muted);
-    line-height: 1.2; 
+    line-height: 1.6; 
+    /*단어 단위 줄바꿈*/
+    word-break: keep-all;
 }
 
 .check-text a {
@@ -104,7 +141,8 @@ label[for="phone-prefix"] {
 
 .btn-submit-join {
     width: 100%;
-    padding: 1.6rem 0;
+    padding: var(--btn-padding-v) 0;
+    margin-top: var(--space-form);
     font-size: var(--fs-fixed-lg);
     font-weight: var(--fw-bold);
     border-radius: var(--radius-sm);
@@ -112,18 +150,23 @@ label[for="phone-prefix"] {
     color: var(--color-text-inverse);
 }
 
+/*비활성화 상태*/
 .btn-submit-join:disabled {
     background-color: var(--color-bg-border);
+    cursor: not-allowed;
 }
 
+/*체크박스 제외 텍스트 입력창*/
 .signup-form input:not([type="checkbox"]), 
 .signup-form select {
     width: 100%;
-    padding: 1.7rem 2.0rem 1.6rem; 
+    height: 5.4rem;
+    padding: 0 var(--form-input-padding-h);
     line-height: normal; 
     border: 1px solid var(--color-bg-border);
     border-radius: var(--radius-sm);
     font-size: var(--fs-md);
+    /*box 크기 고정*/
     box-sizing: border-box;
 }
 
@@ -131,29 +174,111 @@ label[for="phone-prefix"] {
     display: block;
     font-size: var(--fs-md);
     color: var(--color-text-muted);
-    margin-bottom: 1.0rem;
+    margin-bottom: var(--space-xs);
+    margin-top: 2.0rem;
 }
 
 .input-row {
+    position: relative;
     display: flex;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-form);
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+input[type="password"] {
+    font-size: var(--form-pw-dots-fs);
+    letter-spacing: var(--form-pw-dots-ls);
+    font-family: sans-serif; 
+    padding-right: 4.5rem;
 }
 
 .btn-check, .btn-verify {
     width: 13.5rem;
+    height: 5.4rem;
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
     border-radius: var(--radius-sm);
-    font-size: 1.3rem;
+    font-size: var(--form-fs-btn);
 }
 
-.ir {
+.btn-check:hover, .btn-verify:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-check:active, .btn-verify:active {
+    background-color: var(--color-primary-active);
+}
+
+.msg-error, .msg-success, .error-message, .msg-box {
+    display: block;
+    margin-top: var(--form-space-msg);
+    margin-bottom: 0.8rem;
+    font-size: var(--form-fs-msg); 
+    line-height: 1.4rem;
+    min-height: 1.6rem;
+    word-break: keep-all;
+}
+
+.msg-error, .error-message {
+    color: var(--form-color-error); 
+}
+
+.msg-success {
+    color: var(--form-color-success); 
+}
+
+/* 메시지 박스 표시 상태 */
+.msg-box.show {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: var(--form-space-msg) 0 0.8rem;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+.msg-box.show.error {
+    color: var(--form-color-error);
+}
+
+.msg-box.show.success {
+    color: var(--form-color-success);
+}
+
+.icon-valid-check {
     position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.2rem;
+    height: 2.2rem;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    object-fit: contain;
+}
+
+/* 3. 유효성 검사 통과 시 */
+.icon-valid-check.success {
+    opacity: 1;
+    background-image: none;
+}
+
+/* 입력창 에러 시 테두리 강조 */
+.input-error {
+    border-color: var(--form-color-error);
+}
+
+/* 성공시 */
+.input-success {
+    border-color: var(--form-color-success) !important;
 }
