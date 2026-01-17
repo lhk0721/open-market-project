@@ -62,6 +62,30 @@
     margin-top: -1px; 
 }
 
+/* 구매자 영역 아래에 연결 */
+.seller-info-area {
+    border-radius: 0;
+    border-top: none;
+    margin-top: 0;
+}
+
+/* 판매자 탭 활성화 시 구매자 영역 하단 border-radius 제거 */
+.signup-form.seller-mode .common-info {
+    border-radius: 0;
+    border-bottom: none;
+}
+
+/* 판매자 탭 활성화 시 판매자 영역 하단 border-radius 추가 */
+.signup-form.seller-mode .seller-info-area {
+    border-radius: 0 0 var(--radius-form) var(--radius-form);
+    display: block;
+}
+
+/* 판매자 영역 숨김 (기본) */
+.seller-info-area {
+    display: none;
+}
+
 label[for="phone-prefix"] {
     display: block; 
     margin-top: var(--space-form); 
@@ -81,7 +105,7 @@ label[for="phone-prefix"] {
     position: relative;
     display: block;
     padding-left: 2.6rem;
-    margin-top: var(--space-md);
+    margin-top: var(--space-md) !important;
     margin-bottom: 0;
     cursor: pointer;
 }
@@ -124,6 +148,7 @@ label[for="phone-prefix"] {
 /*비활성화 상태*/
 .btn-submit-join:disabled {
     background-color: var(--color-bg-border);
+    cursor: not-allowed;
 }
 
 /*체크박스 제외 텍스트 입력창*/
@@ -159,12 +184,14 @@ label[for="phone-prefix"] {
     position: relative;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 input[type="password"] {
     font-size: var(--form-pw-dots-fs);
     letter-spacing: var(--form-pw-dots-ls);
     font-family: sans-serif; 
+    padding-right: 4.5rem;
 }
 
 .btn-check, .btn-verify {
@@ -176,7 +203,15 @@ input[type="password"] {
     font-size: var(--form-fs-btn);
 }
 
-.msg-error, .msg-success, .error-message {
+.btn-check:hover, .btn-verify:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-check:active, .btn-verify:active {
+    background-color: var(--color-primary-active);
+}
+
+.msg-error, .msg-success, .error-message, .msg-box {
     display: block;
     margin-top: var(--form-space-msg);
     margin-bottom: 0.8rem;
@@ -194,8 +229,27 @@ input[type="password"] {
     color: var(--form-color-success); 
 }
 
+/* 메시지 박스 표시 상태 */
+.msg-box.show {
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: var(--form-space-msg) 0 0.8rem;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+.msg-box.show.error {
+    color: var(--form-color-error);
+}
+
+.msg-box.show.success {
+    color: var(--form-color-success);
+}
+
 .icon-valid-check {
-position: absolute;
+    position: absolute;
     right: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
@@ -203,21 +257,13 @@ position: absolute;
     height: 2.2rem;
     pointer-events: none;
     z-index: 10;
-    
-    background-image: none;
-
-    /* 1. PNG 이미지 자체 색상을 살리기 위해 필터를 제거합니다 */
-    filter: none; 
-    
-    /* 2. 희미하게 보이게 했던 투명도를 1(100%)로 고정합니다 */
-    opacity: 1; 
-    
-    transition: none; /* 소스 교체 시 즉각 반영되도록 설정 */
+    opacity: 0.3;
+    transition: opacity 0.2s ease;
 }
 
-/* 3. 유효성 검사 통과 시 상태 (JS에서 .success 클래스 추가 예정) */
+/* 3. 유효성 검사 통과 시 */
 .icon-valid-check.success {
-    /* 통과 상태: icon-check-on 적용 */
+    opacity: 1;
     background-image: none;
 }
 
@@ -226,11 +272,7 @@ position: absolute;
     border-color: var(--form-color-error);
 }
 
-.icon-check {
-    position: absolute;
-    right: 1.5rem;
-    top: 2.7rem; /* 입력창 높이 절반 */
-    transform: translateY(-50%);
-    width: 2.2rem;
-    height: 2.2rem;
+/* 성공시 */
+.input-success {
+    border-color: var(--form-color-success) !important;
 }
