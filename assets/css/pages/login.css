@@ -30,7 +30,7 @@
 
 .logo img {
     display: block;
-    margin: 0 auto 3.0rem;
+    margin: 0 auto var(--space-2xs);
     width: 19rem;
     height: auto;
 }
