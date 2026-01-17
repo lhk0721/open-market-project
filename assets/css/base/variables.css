@@ -66,6 +66,7 @@
     --space-container: clamp(2.0rem, 5vw, 2.2rem);
 
   /* Spacing System */
+    --space-2xs: 0.4rem;
     --space-xs: 0.8rem;
     --space-sm: 1.2rem;
     --space-form: 1.5rem;  
@@ -112,6 +113,9 @@
     --icon-swiper-2_hover: url('../../images/icon-swiper-2_hover.svg');
     --icon-swiper-2_active: url('../../images/icon-swiper-2_active.svg');
 
+    --icon-swiper-prev: var(--icon-swiper-1); /* 별칭 생성 */
+    --icon-swiper-next: var(--icon-swiper-2);
+
     --icon-user: url('../../images/icon-user.svg');
     --icon-user-2: url('../../images/icon-user-2.svg');
     --icon-delete: url('../../images/icon-delete.svg');
@@ -135,8 +139,8 @@
     --icon-filter-inverse: brightness(0) invert(1); /* 어두운 배경용 */
 
   /* Icon Spacing */
-    --icon-gap-sm: 0.4rem;
-    --icon-gap-md: 0.8rem;
+    --icon-gap-sm: var(--space-2xs);
+    --icon-gap-md: var(--space-xs);
 
   /* 5. Button */
   /* button text size */
@@ -147,6 +151,12 @@
     --btn-padding-tab-t: 1.8rem;  
     --btn-padding-tab-b: 2.5rem;  
     --btn-padding-h: clamp(1.6rem, 5vw, 4.0rem);
+    --input-height: 5.4rem;
+    --input-padding-x: 1.5rem;
+
+    --btn-height-sm: 4.0rem;
+    --btn-height-md: 5.4rem;
+    --btn-height-lg: 6.0rem;
 
   /* button size */
     --btn-min-width: clamp(8.0rem, 15vw, 12.0rem);
@@ -165,8 +175,8 @@
     --form-fs-btn: 1.4rem;
     
   /* Form Spacing */
-    --form-space-msg: 0.8rem;
-    --form-input-padding-h: 1.5rem;
+    --form-msg-gap: 0.8rem;
+    --form-gap: 1.5rem;
     --form-logo-padding-v: 4.0rem;
     
   /* Form Icons Filter */
@@ -176,4 +186,21 @@
   /* 7 . Password Field */
     --form-pw-dots-fs: 2.4rem; /* 비밀번호 점 크기 */
     --form-pw-dots-ls: 0.4rem; /* 비밀번호 점 간격 */
+
+  /* 8. Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.2s ease;
+
+  /* 9. Z-Index (레이어 순서 관리) */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 300;
+    --z-tooltip: 400;
+
+  /* 10. Legacy (하위 호환성 유지) */
+  /* [추가] 기존에 작성한 코드들이 깨지지 않도록 예전 이름을 새 변수에 매핑 */
+    --space-form: var(--form-gap);
+    --form-space-msg: var(--form-msg-gap);
+    --btn-height-main: var(--btn-height-lg);
+    --radius-2xl: var(--radius-xl);
 }
