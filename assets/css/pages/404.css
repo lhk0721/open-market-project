@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   text-align: center;
   width: 100%;
   max-width: 42rem;
@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-form);
+  gap: var(--form-gap);
   width: 100%;
 }
 
@@ -115,13 +115,6 @@
 
 /* 태블릿 (768px 이상) */
 @media (min-width: 768px) {
-  .error-content {
-    gap: var(--space-md);
-  }
-
-  .error-text {
-    gap: var(--space-form);
-  }
 
   .error-title {
     font-size: var(--fs-3xl);
