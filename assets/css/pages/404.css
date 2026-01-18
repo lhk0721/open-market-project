@@ -23,6 +23,7 @@
   background-repeat: no-repeat;
   background-position: center;
   flex-shrink: 0;
+  margin: 0;
 }
 
 .error-content {
