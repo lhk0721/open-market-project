@@ -16,6 +16,18 @@ const productAPI = {
         }
     },
 
+    async getBannerData(limit = 5) {
+        try {
+            // 전체 상품을 가져와서
+            const data = await this.getAllProducts(); 
+            // 상위 limit개(기본 5개)만 잘라서 반환합니다.
+            return data.results.slice(0, limit); 
+        } catch (error) {
+            console.error('getBannerData 에러:', error);
+            return []; // 에러 시 빈 배열을 반환해 main.js가 멈추지 않게 합니다.
+        }
+    },
+
     // 상품 상세 정보 불러오기 (GET)
     async getProductDetail(productId) {
         try {
@@ -100,6 +112,18 @@ const productAPI = {
         } catch (error) {
             console.error('API Error (createDirectOrder):', error);
             throw error;
+        }
+    },
+
+    async getBannerProducts(limit = 5) {
+        try {
+            // 전체 상품 불러오기 API 활용
+            const data = await this.getAllProducts(); 
+            // 최신순으로 등록된 상품 중 limit(기본 5개)만큼만 잘라서 반환
+            return data.results.slice(0, limit);
+        } catch (error) {
+            console.error('API Error (getBannerProducts):', error);
+            return []; // 에러 발생 시 빈 배열 반환 (자연스러운 흐름)
         }
     }
 };

@@ -9,9 +9,14 @@ export const getAccessToken = () => {
     return localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
 };
 
-export const setToken = (token) => {
-    if (!token) return;
-    localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, token);
+export const setToken = (access, refresh) => { // refresh 인자 추가
+    if (!access) return;
+    localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, access);
+    
+    // refresh 토큰 저장
+    if (refresh) {
+        localStorage.setItem('refreshToken', refresh);
+    }
 };
 
 export const removeToken = () => {

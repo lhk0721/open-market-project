@@ -1,3 +1,5 @@
+import { NOT_IMPLEMENTED_MSG } from "./modal.js";
+
 const renderFooter = () => {
     const footer = document.querySelector('footer');
     if (!footer) return;
@@ -10,7 +12,8 @@ const renderFooter = () => {
             <div class="footer-top">
                 <ul class="footer-links">
                     <li><a href="#">호두샵 소개</a></li>
-                    <li>|</li> <li><a href="#">이용약관</a></li>
+                    <li>|</li> 
+                    <li><a href="#">이용약관</a></li>
                     <li>|</li>
                     <li><a href="#" class="link-bold">개인정보처리방침</a></li>
                     <li>|</li>
@@ -27,7 +30,6 @@ const renderFooter = () => {
                 </ol>
             </div>
 
-            <!-- 위 / 아래 구분선 -->
             <div class="row-divider"></div>
             
             <address class="footer-info">
@@ -42,6 +44,16 @@ const renderFooter = () => {
             </address>
         </div>
     `;
+
+    footer.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            // 전역 모달 시스템 호출
+            if (typeof window.showGlobalModal === 'function') {
+                window.showGlobalModal(NOT_IMPLEMENTED_MSG, window.goToMain);
+            }
+        });
+    });
 };
 
 document.addEventListener('DOMContentLoaded', renderFooter);

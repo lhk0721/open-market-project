@@ -1,5 +1,6 @@
 import { getRootPrefix } from "../utils/path.js";
 import { isAuthenticated, removeToken } from "../utils/storage.js";
+import { NOT_IMPLEMENTED_MSG, getModalHTML } from "./modal.js";
 
 const initGNB = () => {
     const header = document.querySelector('header');
@@ -39,22 +40,9 @@ const initGNB = () => {
                 </div>
             </div>
         </div>
-        <div id="login-modal" class="modal-overlay" style="display: none;">
-            <article class="modal-content">
-                <button type="button" id="btn-modal-close" class="btn-close-x">
-                    <img src="${rootPrefix}assets/images/icon-delete.svg" class="btn-close-x-icon" alt="닫기">
-                </button>
-                <p class="modal-text">
-                    로그인이 필요한 서비스입니다.<br>
-                    로그인 하시겠습니까?
-                </p>
-                <div class="modal-btns">
-                    <button type="button" id="btn-modal-cancel" class="btn-no">아니오</button>
-                    <button type="button" id="btn-modal-login" class="btn-yes">예</button>
-                </div>
-            </article>
-        </div>
+        ${getModalHTML()}
     `;
+
     const cartBtn = document.querySelector('.cart-btn'); // 구매자용 장바구니 버튼
     const sellerBtn = document.querySelector('.seller-btn'); //판매자용 판매자 센터 버튼
     const loginBtn = document.getElementById('login-btn');
@@ -62,6 +50,8 @@ const initGNB = () => {
     const userText = document.getElementById('user-status-login');
     const logoutBtn = document.getElementById('logout-btn');
     const mypageBtn = document.getElementById('mypage-btn');
+    const searchBtn = document.querySelector('.btn-search');
+    const searchInput = document.querySelector('.search-input');
     
     // storage.js의 함수를 사용하여 실제 로그인 상태 확인
     let isLoggedIn = isAuthenticated(); 
@@ -94,20 +84,51 @@ const initGNB = () => {
 
     updateUI();
 
+    // 검색창 관련 모달창
+    const handleNotImplemented = () => {
+        window.showGlobalModal(NOT_IMPLEMENTED_MSG, window.goToMain);
+    };
+
+    if (searchBtn) searchBtn.addEventListener('click', handleNotImplemented);
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleNotImplemented();
+        });
+    }
+
     // 장바구니 버튼 클릭 시
     if (cartBtn) {
         cartBtn.addEventListener('click', () => {
             if (!isLoggedIn) {
                 if (typeof openModal === 'function') openModal(); 
             } else {
-                location.href = `${rootPrefix}cart/index.html`;
+                handleNotImplemented();
+                // location.href = `${rootPrefix}cart/index.html`;
             }
         });
     }
 
     if (sellerBtn) {
-        sellerBtn.addEventListener('click', () => {
-            location.href = `${rootPrefix}seller-center/index.html`; // 판매자 센터 경로
+        sellerBtn.addEventListener('click', handleNotImplemented);
+        // sellerBtn.addEventListener('click', () => {
+        //     location.href = `${rootPrefix}seller-center/index.html`; // 판매자 센터 경로
+        // });
+    }
+
+    if (mypageBtn) {
+        mypageBtn.addEventListener('click', handleNotImplemented);
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            window.showGlobalModal("로그아웃 하시겠습니까?", () => {
+                removeToken();
+                localStorage.removeItem('isLoggedIn'); 
+                localStorage.removeItem('user_type');
+                isLoggedIn = false;
+                updateUI();
+                window.goToMain(); // 초기화 후 메인으로 이동
+            });
         });
     }
 
@@ -116,7 +137,6 @@ const initGNB = () => {
         loginBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (!isLoggedIn) {
-                // 실제 로그인은 login.html 페이지 내 로직에서 처리됨
                 location.href = `${rootPrefix}html/login/index.html`;
             } else {
                 const isShowing = dropdownMenu.classList.toggle('show');
@@ -125,26 +145,6 @@ const initGNB = () => {
         });
 
         dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
-
-        if (mypageBtn) {
-            mypageBtn.addEventListener('click', () => {
-                location.href = `${rootPrefix}mypage/index.html`; 
-            });
-        }
-
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => {
-                if (confirm("로그아웃 하시겠습니까?")) {
-                    // storage.js의 removeToken을 호출하여 모든 인증 정보 삭제
-                    removeToken();
-                    localStorage.removeItem('isLoggedIn'); // 기존 테스트 키값도 정리
-                    localStorage.removeItem('user_type');
-                    isLoggedIn = false;
-                    updateUI();
-                    location.reload(); // 초기화를 위해 새로고침
-                }
-            });
-        }
     }
 
     // 바깥 영역 클릭 시 드롭다운 닫기
