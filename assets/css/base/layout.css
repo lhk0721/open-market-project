@@ -110,7 +110,8 @@ header .container {
 
 .promotion {
     width: 100%;
-    max-width: 100%;
+    max-width: var(--banner-max-width);
+    margin: 0 auto;
     position: relative; 
     overflow: hidden;
 }
