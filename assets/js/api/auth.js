@@ -20,6 +20,10 @@ const request = async (url, method = "GET", body = null) => {
     return data;
 };
 
+export const loginAPI = (username, password) => {
+    return request("accounts/login/", "POST", { username, password });
+};
+
 export const signupAPI = (isSeller, payload) => {
     const url = isSeller ? "accounts/seller/signup/" : "accounts/buyer/signup/";
     return request(url, "POST", payload);

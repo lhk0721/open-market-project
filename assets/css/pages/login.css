@@ -94,8 +94,8 @@
 
 /* 에러 메시지 */
 .error-txt {
+    padding-top: var(--btn-padding-tab-t);
     text-align: left;
-    margin-bottom: var(--form-msg-gap);
     font-size: var(--form-fs-msg);
     color: var(--color-error);
     min-height: 1.6rem;
