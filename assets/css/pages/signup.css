@@ -1,3 +1,7 @@
+html {
+    font-size: 55% !important; 
+}
+
 .header-signup {
     display: flex;
     justify-content: center;
@@ -264,23 +268,11 @@ input[type="password"] {
     pointer-events: none;
     z-index: 10;
     opacity: 1; 
-    transition: filter 0.2s ease;
     object-fit: contain;
-    filter: var(--form-filter-disabled);
-}
-
-.icon-valid-check.valid {
-    filter: none;
 }
 
 .input-error {
-    border-color: var(--color-error) !important; /* <수정 */
-}
-
-/* 3. 유효성 검사 통과 시 */
-.icon-valid-check.success {
-    opacity: 1;
-    background-image: none;
+    border-color: var(--color-error) !important;
 }
 
 /* 입력창 에러 시 테두리 강조 */
