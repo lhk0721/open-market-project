@@ -33,17 +33,17 @@
 }
 
 .seller {
-    font-size: var(--fs-md);
+    font-size: var(--fs-xl);
     color: var(--color-text-muted);;
 }
 
 .product-name {
-    font-size: var(--fs-2xl);
+    font-size: var(--fs-4xl);
     color: var(--color-text-primary);
 }
 
 .L-price {
-    font-size: var(--fs-2xl);
+    font-size: var(--fs-3xl);
     font-weight: var(--fw-bold);
     color: var(--color-text-primary);
 }
@@ -60,15 +60,16 @@
 
 /* 주문 관련 정보 (배송, 수량, 버튼) */
 .order-meta {
-    margin-top: var(--detail-order-top);
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md); /*불안*/
+    gap: 0; 
 }
 
 .shipping {
     font-size: var(--fs-md);
     color: var(--color-text-muted);
+    margin-bottom: 2.0rem;
 }
 
 .order-meta_amount {
@@ -78,13 +79,15 @@
     border-bottom: 2px solid var(--color-border-primary);
     display: flex;
     align-items: center;
+    padding-top: 3.0rem;
+    padding-bottom: 3.0rem;
 }
 
 .order-meta_price-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 3.2rem 0 2.2rem;
+    margin: 1.8rem 0 2.2rem;
 }
 
 .order-meta_label{
@@ -112,6 +115,11 @@
 .btn-group {
     display: flex;
     gap: var(--detail-btn-gap);
+}
+
+.product-info {
+    margin-top: var(--detail-section-gap); 
+    margin-bottom: var(--detail-section-gap); 
 }
 
 /* ===== 상품 상세 정보 탭 영역 (Bottom) ===== */
