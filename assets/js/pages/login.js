@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorLabel = document.getElementById("errorMessage");
     const tabs = document.querySelectorAll(".login-tabs button");
 
-    // 1. [팀원 코드 통합] 탭 전환 및 유저 타입 설정 로직
+    // 탭 전환 및 유저 타입 설정 로직
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             // 모든 탭 스타일 및 접근성 속성 초기화
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 2. [본인 코드 통합] 로그인 제출 로직
+    // 로그인 제출 로직
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault(); // 브라우저 기본 제출 동작 방지
         
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = passwordInput.value.trim();
         const user_type = userTypeInput.value;
 
-        // [UX 개선] 공란 체크 및 포커스 이동
+        // 공란 체크 및 포커스 이동
         if (!username) {
             displayError("아이디를 입력해 주세요.", usernameInput);
             return;
@@ -77,9 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /**
-     * 에러 메시지 출력 및 해당 입력창 포커스 함수
-     */
+    // 에러 메시지 출력 및 해당 입력창 포커스 함수
     function displayError(message, targetElement) {
         errorLabel.textContent = message;
         // 웹 접근성 'ir' 클래스 제거 및 노출
@@ -91,17 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /**
-     * 에러 UI 초기화 함수
-     */
     function resetUI() {
         errorLabel.classList.add("ir");
         errorLabel.style.display = "none";
         errorLabel.textContent = "";
     }
 
-    // 3. 비밀번호 찾기 미구현 모달 연결
-    const findPwBtn = document.querySelector('.login-footer a:last-child');
+    // 비밀번호 찾기 미구현 모달 연결
+    const findPwBtn = document.querySelector('#btn-find-pw');
     findPwBtn?.addEventListener('click', (e) => {
         e.preventDefault();
         if (typeof window.showGlobalModal === 'function') {

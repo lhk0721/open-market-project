@@ -3,13 +3,17 @@ import { getRootPrefix } from "../utils/path.js";
 const rootPrefix = getRootPrefix();
 export const NOT_IMPLEMENTED_MSG = "해당 영역은 현재 목표 범위에 포함되어<br>있지 않아 구현되지 않았습니다.<br>메인 페이지로 이동하시겠습니까?";
 
+// window에도 등록 (다른 파일에서 접근 가능하도록)
+window.NOT_IMPLEMENTED_MSG = NOT_IMPLEMENTED_MSG;
+
 export const getModalHTML = () => `
     <div id="global-modal" class="modal-overlay" style="display: none;">
         <article class="modal-content">
             <button type="button" id="btn-modal-close" class="btn-close-x">
                 <img src="${rootPrefix}assets/images/icon-delete.svg" class="btn-close-x-icon" alt="닫기">
             </button>
-            <p class="modal-text"></p> <div class="modal-btns">
+            <p class="modal-text"></p>
+            <div class="modal-btns">
                 <button type="button" id="btn-modal-cancel" class="btn-no">아니오</button>
                 <button type="button" id="btn-modal-confirm" class="btn-yes">예</button>
             </div>
@@ -30,7 +34,10 @@ window.showGlobalModal = (message, onConfirm) => {
     const modalText = modal?.querySelector('.modal-text');
     const confirmBtn = document.getElementById('btn-modal-confirm');
 
-    if (!modal || !modalText || !confirmBtn) return;
+    if (!modal || !modalText || !confirmBtn) {
+        console.error('모달 요소를 찾을 수 없습니다:', { modal, modalText, confirmBtn });
+        return;
+    }
 
     modalText.innerHTML = message;
 
@@ -68,5 +75,13 @@ document.addEventListener('click', (e) => {
     const modalOverlay = document.getElementById('global-modal');
     if (e.target === modalOverlay) {
         window.closeModal();
+    }
+});
+
+// 페이지 로드 시 모달 HTML을 DOM에 삽입
+document.addEventListener('DOMContentLoaded', () => {
+    if (!document.getElementById('global-modal')) {
+        document.body.insertAdjacentHTML('beforeend', getModalHTML());
+        console.log('모달 HTML이 DOM에 추가되었습니다.');
     }
 });
