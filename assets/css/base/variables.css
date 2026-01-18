@@ -62,7 +62,7 @@
   /* Container */
     --container-width: 1280px;
     --container-padding: var(--space-container);
-    --banner-max-width: clamp(1280px, 96vw, 1920px);
+    --banner-max-width: clamp(1280px, 100vw, 1680px);
 
     --space-section: clamp(4.0rem, 5vw, 8.0rem);
     --space-container: clamp(2.0rem, 5vw, 2.2rem);
