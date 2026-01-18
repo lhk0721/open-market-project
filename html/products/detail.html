@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko-KR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail-Page</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../assets/css/base/variables.css">
     <link rel="stylesheet" href="../../assets/css/base/reset.css">
+    <link rel="stylesheet" href="../../assets/css/base/variables.css">
     <link rel="stylesheet" href="../../assets/css/base/layout.css">
     <link rel="stylesheet" href="../../assets/css/base/components.css">
 
@@ -22,58 +22,64 @@
 <header class="header"></header>
 
 <main class="main-content">
-    <div class="container">
+    <article class="container">
         <h1 id="seo-product-name" class="ir"></h1>
 
-        <section class="product-summary">
-            <h2 class="ir">상품 구매 요약 영역</h2>
+        <section class="product-summary" aria-labelledby="summary-title">
+            <h2 id="summary-title" class="ir">상품 구매 요약 영역</h2>
 
-            <img class="product-image" src="../../assets/images/product-img_placeholder.png" alt="">
+            <figure class="product-image-wrap">
+                <img class="product-image" src="../../assets/images/product-img_placeholder.png" alt="">
+            </figure>
 
-            <div class="meta">
-                <div class="product-meta">
+            <section class="meta">
+                <hgroup class="product-meta">
                     <p class="seller"></p>
                     <p class="product-name"></p>
                     <p class="L-price"></p>
+                </hgroup>
+
+                <section class="order-meta">
+                    <p class = "shipping" id = "shipping"></p>
+
+                <div class="order-meta_amount">
+                    <fieldset class="amount" role="group" aria-label="수량 조절">
+                        <legend class="ir">수량 조절</legend>
+                        <button type="button" class="minus" aria-label="수량 감소"></button>
+                        <output class="current-amount">1</output>
+                        <button type="button" class="plus" aria-label="수량 증가"></button>
+                    </fieldset>
                 </div>
 
-                <div class="order-meta">
-                    <p class="shipping"></p>
-                    <div class="order-meta_amount">
-                        <div class="amount">
-                            <button class="minus"></button>
-                            <div class="current-amount">1</div>
-                            <button class="plus"></button>
-                        </div>
-                    </div>
-                    <div class="order-meta_price-group">
-                        <p class="order-meta_label">총 상품 금액</p>
+                <dl class="order-meta_price-group">
+                    <dt class="order-meta_label">총 상품 금액</dt>
+                    <dd class="price-info-wrapper">
+                        <span class="totalAmount">총 수량 <strong class="quantity"></strong>개</span>
+                        <span class="order-meta_divider" aria-hidden="true"></span>
+                        <strong class="L-price totalPrice"></strong>
+                    </dd>
+                </dl>
+            </section>
 
-                        <div class="price-info-wrapper">
-                            <p class="totalAmount">총 수량 <span class="quantity"></span>개</p>
-                            <span class="order-meta_divider"></span>
-                            <p class="L-price totalPrice"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button class="btn-main">바로구매</button>
-                    <button class="btn-dark">장바구니</button>
-                </div>
-            </div>
+                <nav class="btn-group" aria-label="구매 옵션">
+                    <button type="button" class="btn-main M-button">바로구매</button>
+                    <button type="button" class="btn-dark M-dark-button">장바구니</button>
+                </nav>
+            </section>
+
+        <section class="product-info" aria-labelledby="info-title">
+            <h2 id="info-title" class="ir">상품 상세 정보</h2>
+      
+            <nav class="product-info_header" role="tablist" aria-label="상품 정보 탭">
+                <button type="button" role="tab" class="tab-active" aria-selected="true">버튼</button>
+                <button type="button" role="tab" class="tab-disabled" aria-selected="false" aria-disabled="true">리뷰</button>
+                <button type="button" role="tab" class="tab-disabled" aria-selected="false" aria-disabled="true">Q&A</button>
+                <button type="button" role="tab" class="tab-disabled" aria-selected="false" aria-disabled="true">반품/교환정보</button>
+            </nav>
+            <div class="product-info_body" role="tabpanel"></div>
         </section>
 
-        <section class="product-info">
-            <header class="product-info_header">
-                <button class="tab-active">버튼</button>
-                <button class="tab-disabled">리뷰</button>
-                <button class="tab-disabled">Q&A</button>
-                <button class="tab-disabled">반품/교환정보</button>
-            </header>
-            <div class="product-info_body"></div>
-        </section>
-
-    </div>
+  </article>
 </main>
 
 <footer class="footer"></footer> 

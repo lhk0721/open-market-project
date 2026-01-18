@@ -115,9 +115,6 @@
 }
 
 /* ===== 상품 상세 정보 탭 영역 (Bottom) ===== */
-.product-info header {
-    box-shadow: none;
-}
 .product-info_header {
     display: flex;
 }
@@ -141,6 +138,9 @@
 }
 
 .amount{
+    border: none;
+    padding: 0;
+    margin: 0;
     width: 15rem;
     height: 5rem;
     background-color: var(--color-bg-primary);
@@ -149,6 +149,10 @@
     display: flex;
     align-items: stretch;
     overflow: hidden;
+}
+
+.product-image-wrap {
+    margin: 0;
 }
 
 .minus,
